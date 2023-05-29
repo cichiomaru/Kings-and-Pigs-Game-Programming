@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    private int damage;
     [SerializeField] private GameObject explosionEffect;
 
     private Rigidbody2D Rigidbody2D;
@@ -21,5 +22,10 @@ public class Bomb : MonoBehaviour
     public void SetVelocity(Vector2 direction)
     {
         Rigidbody2D.velocity = direction;
+    }
+
+    internal void SetDamage(int damage)
+    {
+        this.damage = damage;
     }
 }

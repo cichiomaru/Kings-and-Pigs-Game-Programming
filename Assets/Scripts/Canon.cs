@@ -5,6 +5,7 @@ using UnityEngine;
 public class Canon : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private int damage;
     [SerializeField] private GameObject bomb;
     [SerializeField] private Transform bombAnchor;
 
@@ -22,6 +23,7 @@ public class Canon : MonoBehaviour
         Bomb _bomb = Instantiate(bomb, bombAnchor.position, Quaternion.identity).GetComponent<Bomb>();
 
         _bomb.SetVelocity(GetDirection() * speed);
+        _bomb.SetDamage(damage);
     }
 
     private Vector2 GetDirection()

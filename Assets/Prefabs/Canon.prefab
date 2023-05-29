@@ -130,5 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  damage: 5
   bomb: {fileID: 839623668362729256, guid: 7addca5020bcc5a469e711b93da12c3e, type: 3}
   bombAnchor: {fileID: 2402548493040179903}
