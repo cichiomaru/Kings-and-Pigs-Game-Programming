@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-public class Canon : MonoBehaviour
+public class Canon : MonoBehaviour, IAttack
 {
     [SerializeField] private float speed;
     [SerializeField] private int damage;
@@ -13,12 +12,12 @@ public class Canon : MonoBehaviour
     {
         while (true)
         {
-            Shoot();
+            Attack();
             yield return new WaitForSeconds(1);
         }
     }
 
-    private void Shoot()
+    public void Attack()
     {
         Bomb _bomb = Instantiate(bomb, bombAnchor.position, Quaternion.identity).GetComponent<Bomb>();
 

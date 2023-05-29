@@ -20,6 +20,5 @@ public class Explosion : MonoBehaviour
         {
             damageable.TakeDamage(damage);
         }
-        Debug.Log(damageable);
     }
 }
