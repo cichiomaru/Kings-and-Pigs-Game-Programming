@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class King : MonoBehaviour, IMove, IJump, IDamageable
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
-    [SerializeField] private int currentHp;
+    [SerializeField] private Health health;
 
     private Vector3 direction;
 
@@ -16,30 +17,29 @@ public class King : MonoBehaviour, IMove, IJump, IDamageable
         direction = new Vector3();
         Rigidbody2D = GetComponent<Rigidbody2D>();
     }
-
     private void Update()
     {
         PositionUpdate();
     }
-
+    internal Health GetHealth()
+    {
+        return health;
+    }
     public void Jump()
     {
         Vector3 jumpVector = new Vector3(Rigidbody2D.velocity.x, jumpPower, 0);
         Rigidbody2D.velocity = jumpVector;
     }
-
     public void SetDirection(float direction)
     {
         this.direction.x = direction;
 
         SetOrientation(direction);
     }
-
     public void PositionUpdate()
     {
         transform.position += direction * Time.deltaTime * speed;
     }
-
     public void SetOrientation(float direction)
     {
         if (direction > 0)
@@ -51,9 +51,9 @@ public class King : MonoBehaviour, IMove, IJump, IDamageable
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
-
     public void TakeDamage(int damage)
     {
-        currentHp = damage > currentHp ? 0 : currentHp - damage;
+        health.Reduce(damage);
+        //currentHp = damage > currentHp ? 0 : currentHp - damage;
     }
 }

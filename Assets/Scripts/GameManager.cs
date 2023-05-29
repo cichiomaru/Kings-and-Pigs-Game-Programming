@@ -1,11 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Vector2 gravity;
-
-    private float time;
+    [SerializeField] private float time;
 
     private void Awake()
     {
@@ -15,5 +15,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         time -= Time.deltaTime;
+    }
+
+    internal int GetTime()
+    {
+        return (int)time;
     }
 }
