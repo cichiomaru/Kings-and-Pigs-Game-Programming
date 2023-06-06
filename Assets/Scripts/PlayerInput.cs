@@ -6,11 +6,13 @@ public class PlayerInput : MonoBehaviour
 {
     private IMove move;
     private IJump jump;
+    private IAttack attack;
 
     private void Awake()
     {
         move = GetComponent<IMove>();
         jump = GetComponent<IJump>();
+        attack = GetComponent<IAttack>();
     }
 
     private void Update()
@@ -19,7 +21,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jump.Jump();
+            attack.Attack();
         }
     }
 }
